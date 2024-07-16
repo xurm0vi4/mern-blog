@@ -9,16 +9,16 @@ const Header = () => {
     <header className={styles.root}>
       <Container maxWidth="lg" fixed>
         <div className={styles.flex}>
-          <a href="/">
+          <Link to="/">
             <Button variant="contained" color="secondary">Mern blog</Button>
-          </a>
+          </Link>
           <div className={styles.buttons}>
-            <a href="/login">
+            <Link to="/login">
               <Button variant="outlined">Sign in</Button>
-            </a>
-            <a href="/register">
+            </Link>
+            <Link to="/register">
               <Button variant="contained">Sign up</Button>
-            </a>
+            </Link>
           </div>
         </div>
       </Container>
