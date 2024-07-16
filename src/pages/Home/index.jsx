@@ -5,8 +5,13 @@ import Post from '../../components/Post';
 import TagsBlock from '../../components/TagsBlock';
 import { Tab, Tabs } from '@mui/material';
 import CommentsBlock from '../../components/CommentsBlock';
+import { fetchPosts } from '../../redux/slices/posts';
+import { useDispatch } from 'react-redux';
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const data = dispatch(fetchPosts());
+  console.log(data);
   return (
     <>
       <Tabs value={0} sx={{ marginTop: 3 }}>
