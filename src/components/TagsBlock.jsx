@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './TagsBlock.module.scss';
 import {
   List,
   ListItem,
@@ -19,7 +18,7 @@ const TagsBlock = ({}) => {
       <Typography variant="h6" gutterBottom pl={2} pt={1.5}>
         Tags
       </Typography>
-      <List sx={{width: 250}}>
+      <List sx={{ width: '300px' }}>
         {tags.map((tag, i) => (
           <ListItem key={i} disablePadding>
             <ListItemButton>

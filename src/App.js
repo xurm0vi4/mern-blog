@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import { Route, Routes } from 'react-router-dom';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
+import FullPost from './pages/FullPost';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
+          <Route path="/posts" element={<FullPost />} />
         </Routes>
       </Container>
     </div>
