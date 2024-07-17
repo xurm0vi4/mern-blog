@@ -7,14 +7,13 @@ import CommentIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import { Link } from 'react-router-dom';
 
 const Post = ({
-  img,
-  avatarUrl,
-  fullName,
+  _id,
+  imageUrl,
   createdAt,
   title,
   tags,
   viewsCount,
-  comments,
+  user,
   text,
   isFullPost,
 }) => {

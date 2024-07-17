@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import styles from './Home.module.scss';
 import Post from '../../components/Post';
@@ -6,12 +6,17 @@ import TagsBlock from '../../components/TagsBlock';
 import { Tab, Tabs } from '@mui/material';
 import CommentsBlock from '../../components/CommentsBlock';
 import { fetchPosts } from '../../redux/slices/posts';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const data = dispatch(fetchPosts());
-  console.log(data);
+  const posts = useSelector((state) => state.posts);
+
+  useEffect(() => {
+    dispatch(fetchPosts());
+  }, []);
+
+  console.log(posts);
   return (
     <>
       <Tabs value={0} sx={{ marginTop: 3 }}>
@@ -21,8 +26,7 @@ const Home = () => {
       <div className={styles.content}>
         <div className={styles.posts}>
           <Post />
-          <Post />
-          <Post />
+          {posts.length > 0 && posts.map((post) => <Post key={post._id} {...post} />)}
         </div>
         <div className={styles.sidebar}>
           <TagsBlock />
