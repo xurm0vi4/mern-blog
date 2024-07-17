@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   List,
   ListItem,
@@ -9,10 +9,12 @@ import {
   Typography,
 } from '@mui/material';
 import TagIcon from '@mui/icons-material/Tag';
+import axios from '../axios';
 
 const tags = ['tag1', 'tag2', 'tag3'];
 
-const TagsBlock = ({}) => {
+const TagsBlock = ({tags}) => {
+  
   return (
     <Paper>
       <Typography variant="h6" gutterBottom pl={2} pt={1.5}>

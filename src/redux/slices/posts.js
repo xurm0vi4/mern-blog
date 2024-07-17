@@ -6,9 +6,20 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
   return data;
 });
 
+export const fetchTags = createAsyncThunk('posts/fetchTags', async () => {
+  const { data } = await axios.get('/tags');
+  return data;
+});
+
 const initialState = {
-  items: [],
-  status: 'loading',
+  posts: {
+    items: [],
+    status: 'loading',
+  },
+  tags: {
+    items: [],
+    status: 'loading',
+  },
 };
 
 export const postsSlice = createSlice({
@@ -18,16 +29,28 @@ export const postsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchPosts.pending, (state) => {
-        state.items = [];
-        state.status = 'loading';
+        state.posts.items = [];
+        state.posts.status = 'loading';
       })
       .addCase(fetchPosts.fulfilled, (state, action) => {
-        state.items = action.payload;
-        state.status = 'loaded';
+        state.posts.items = action.payload;
+        state.posts.status = 'loaded';
       })
       .addCase(fetchPosts.rejected, (state) => {
-        state.items = [];
-        state.status = 'error';
+        state.posts.items = [];
+        state.posts.status = 'error';
+      })
+      .addCase(fetchTags.pending, (state) => {
+        state.tags.items = [];
+        state.tags.status = 'loading';
+      })
+      .addCase(fetchTags.fulfilled, (state, action) => {
+        state.tags.items = action.payload;
+        state.tags.status = 'loaded';
+      })
+      .addCase(fetchTags.rejected, (state) => {
+        state.tags.items = [];
+        state.tags.status = 'error';
       });
   },
 });

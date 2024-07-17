@@ -17,7 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
-          <Route path="/posts" element={<FullPost />} />
+          <Route path="/posts/:id" element={<FullPost />} />
         </Routes>
       </Container>
     </div>
