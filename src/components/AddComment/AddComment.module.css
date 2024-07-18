@@ -1,0 +1,12 @@
+.root {
+  display: flex;
+  padding: 15px;
+  gap: 15px;
+}
+
+.form {
+  width: 100%;
+}
+.form button {
+  margin-top: 15px;
+}

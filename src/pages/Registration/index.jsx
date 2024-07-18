@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './Registration.module.scss';
 import { Button, Paper, TextField, Typography } from '@mui/material';
 const Registration = () => {
+  
   return (
     <Paper classes={{ root: styles.root }}>
       <Typography variant="h4" textAlign="center" mb={3}>Sign up</Typography>
