@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './Post.module.scss';
 import { Avatar, Skeleton, Stack } from '@mui/material';
+
+import styles from './Post.module.scss';
 
 const PostSkeleton = () => {
   return (

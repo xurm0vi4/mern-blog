@@ -1,11 +1,12 @@
 import React from 'react';
-import styles from './Registration.module.scss';
-import { Button, Paper, TextField, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import axios from '../../axios';
 import { useNavigate } from 'react-router-dom';
+
+import { Button, Paper, TextField, Typography } from '@mui/material';
 import { fetchRegister } from '../../redux/slices/auth';
+
+import styles from './Registration.module.scss';
 
 const Registration = () => {
   const isAuth = useSelector((state) => Boolean(state.auth.data));

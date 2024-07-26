@@ -1,15 +1,17 @@
 import React from 'react';
-import styles from './Post.module.scss';
+import Markdown from 'react-markdown';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { fetchRemovePost } from '../../redux/slices/posts';
+
+import { IconButton } from '@mui/material';
 import UserInfo from '../UserInfo';
 import EyeIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import DeleteIcon from '@mui/icons-material/Clear';
 import EditIcon from '@mui/icons-material/Edit';
 import CommentIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
-import { Link } from 'react-router-dom';
-import { IconButton } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchRemovePost } from '../../redux/slices/posts';
-import Markdown from 'react-markdown';
+
+import styles from './Post.module.scss';
 
 const Post = ({
   _id,
@@ -26,12 +28,11 @@ const Post = ({
 }) => {
   const dispatch = useDispatch();
 
-  const removePost = () =>{
-    if(window.confirm('Are you sure you want to delete this post?')){
-      dispatch(fetchRemovePost(_id))
+  const removePost = () => {
+    if (window.confirm('Are you sure you want to delete this post?')) {
+      dispatch(fetchRemovePost(_id));
     }
-  }
-
+  };
 
   return (
     <div className={styles.root}>
@@ -57,7 +58,11 @@ const Post = ({
       )}
 
       <div className={styles.content}>
-        <UserInfo avatarUrl={user?.avatarUrl || ''} fullName={user?.fullName} date={createdAt || 0} />
+        <UserInfo
+          avatarUrl={user?.avatarUrl || ''}
+          fullName={user?.fullName}
+          date={createdAt || 0}
+        />
         <div className={styles.info}>
           <h2 className={styles.title}>
             {isFullPost ? (

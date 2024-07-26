@@ -1,21 +1,20 @@
-import { Avatar, Button, TextField } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import styles from './AddComment.module.scss';
-import axios from '../../axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import axios from '../../axios';
+import { Avatar, Button, TextField } from '@mui/material';
+
+import styles from './AddComment.module.scss';
 
 const AddComment = ({ id, render, setRender }) => {
   const userData = useSelector((state) => state.auth.data);
   const [text, setText] = useState('');
-
 
   const submitComment = async () => {
     try {
       if (text.trim().length) {
         await axios.post(`/posts/${id}/comments`, { text });
         setText('');
-        setRender((prev) => prev + 1)
+        setRender((prev) => prev + 1);
       } else {
         alert('Enter your comment');
       }
@@ -23,7 +22,6 @@ const AddComment = ({ id, render, setRender }) => {
       console.warn(err);
     }
   };
-
 
   return (
     <>

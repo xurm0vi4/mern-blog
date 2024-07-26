@@ -1,10 +1,11 @@
 import React from 'react';
-import styles from './Login.module.scss';
-import { Button, Paper, TextField, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { fetchLogin, fetchRegister } from '../../redux/slices/auth';
 import { useNavigate } from 'react-router-dom';
+
+import { Button, Paper, TextField, Typography } from '@mui/material';
+import { fetchLogin } from '../../redux/slices/auth';
+import styles from './Login.module.scss';
 
 const Login = () => {
   const dispatch = useDispatch();

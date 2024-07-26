@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import styles from './Home.module.scss';
+import { fetchComments, fetchPosts, fetchTags } from '../../redux/slices/posts';
+
+import { Tab, Tabs } from '@mui/material';
 import Post from '../../components/Post';
 import TagsBlock from '../../components/TagsBlock';
-import { Tab, Tabs } from '@mui/material';
-import CommentsBlock from '../../components/CommentsBlock';
-import { fetchComments, fetchPosts, fetchTags } from '../../redux/slices/posts';
-import { useDispatch, useSelector } from 'react-redux';
 import PostSkeleton from '../../components/Post/PostSkeleton';
+import CommentsBlock from '../../components/CommentsBlock';
+
+import styles from './Home.module.scss';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -18,7 +20,7 @@ const Home = () => {
 
   const isPostsLoading = posts.status === 'loading';
   const isTagsLoading = tags.status === 'loading';
-  const isCommentsLoading = comments.status === 'loading';
+  const isCommentsLoading = comments.status === 'loading';s
 
   useEffect(() => {
     dispatch(fetchPosts());

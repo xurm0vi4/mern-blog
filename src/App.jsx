@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
-
-import Header from './components/Header';
 import { Container } from '@mui/material';
-import Home from './pages/Home';
 import { Route, Routes } from 'react-router-dom';
-import Login from './pages/Login';
-import Registration from './pages/Registration';
-import FullPost from './pages/FullPost';
 import { useDispatch } from 'react-redux';
 import { fetchAuthMe } from './redux/slices/auth';
+
 import AddPost from './pages/AddPost';
+import Home from './pages/Home';
+import Header from './components/Header';
+import FullPost from './pages/FullPost';
+import Login from './pages/Login';
+import Registration from './pages/Registration';
 
 function App() {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     dispatch(fetchAuthMe());
   }, []);
-  
+
   return (
     <div className="wrapper">
       <Header />

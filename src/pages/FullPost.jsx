@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from '../axios';
+
 import Post from '../components/Post';
 import CommentsBlock from '../components/CommentsBlock';
 import AddComment from '../components/AddComment';
-import { useParams } from 'react-router-dom';
-import axios from '../axios';
 import PostSkeleton from '../components/Post/PostSkeleton';
 
 const FullPost = () => {
@@ -28,7 +29,6 @@ const FullPost = () => {
   useEffect(() => {
     getPost();
   }, [render]);
-
 
   return (
     <div style={{ marginTop: 30 }}>

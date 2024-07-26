@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   List,
   ListItem,
@@ -10,7 +10,6 @@ import {
   Typography,
 } from '@mui/material';
 import TagIcon from '@mui/icons-material/Tag';
-import axios from '../axios';
 
 const TagsBlock = ({ tags, isLoading = true }) => {
   return (

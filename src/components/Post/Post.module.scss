@@ -4,15 +4,15 @@
   border-radius: 10px;
   border: 1px solid rgba($color: #000000, $alpha: 0.1);
   position: relative;
-  &:hover{
+  &:hover {
     box-shadow: 0 0 5px 1px rgba($color: #000000, $alpha: 0.08);
 
-    .editButtons{
+    .editButtons {
       opacity: 1;
     }
   }
 }
-.editButtons{
+.editButtons {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -27,7 +27,6 @@
   width: 100%;
   height: 300px;
   object-fit: cover;
-  
 }
 .content {
   padding: 30px;
@@ -39,13 +38,12 @@
   flex-direction: column;
   gap: 15px;
 }
-.text{
-  
+.text {
 }
-.link{
+.link {
   color: #000;
   text-decoration: none;
-  &:hover{
+  &:hover {
     color: #0050ac;
   }
 }

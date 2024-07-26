@@ -11,10 +11,10 @@ export const fetchTags = createAsyncThunk('posts/fetchTags', async () => {
   return data;
 });
 
-export const fetchComments = createAsyncThunk('posts/fetchAllComments', async() =>{
+export const fetchComments = createAsyncThunk('posts/fetchAllComments', async () => {
   const { data } = await axios.get('/comments');
   return data;
-})
+});
 
 export const fetchRemovePost = createAsyncThunk('posts/fetchRemovePost', async (id) => {
   const { data } = await axios.delete(`/posts/${id}`);

@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   Avatar,
   Divider,
@@ -9,7 +11,6 @@ import {
   Skeleton,
   Typography,
 } from '@mui/material';
-import React, { useEffect } from 'react';
 
 import { formatDate } from '../utils/formatDate';
 
@@ -37,7 +38,8 @@ const CommentsBlock = ({ comments, isLoading = true, isHomePage, children }) => 
                 <ListItemAvatar>
                   <Avatar alt={comment.author.fullName} src={comment.author.avatarUrl} />
                 </ListItemAvatar>
-                <ListItemText sx={{overflowX: 'hidden'}}
+                <ListItemText
+                  sx={{ overflowX: 'hidden' }}
                   primary={
                     <React.Fragment>
                       <Typography
@@ -59,7 +61,7 @@ const CommentsBlock = ({ comments, isLoading = true, isHomePage, children }) => 
                   secondary={
                     <React.Fragment>
                       <Typography
-                        sx={{ display: 'inline', color: 'rgba(0, 0, 0, 0.7);'}}
+                        sx={{ display: 'inline', color: 'rgba(0, 0, 0, 0.7);' }}
                         component="span"
                         variant="body"
                         color="text.primary">

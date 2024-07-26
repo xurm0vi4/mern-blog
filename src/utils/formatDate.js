@@ -1,5 +1,5 @@
-import { formatDistanceToNow, format, isToday, isYesterday } from 'date-fns'
-import { enUS } from 'date-fns/locale'
+import { formatDistanceToNow, format, isToday, isYesterday } from 'date-fns';
+import { enUS } from 'date-fns/locale';
 
 export const formatDate = (date) => {
   const postDate = new Date(date);

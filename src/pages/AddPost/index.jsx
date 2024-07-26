@@ -1,21 +1,22 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Button, Paper, TextField } from '@mui/material';
+import axios from '../../axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+
 import SimpleMdeReact from 'react-simplemde-editor';
+import { Button, Paper, TextField } from '@mui/material';
 
 import 'easymde/dist/easymde.min.css';
 import styles from './AddPost.module.scss';
 
-import axios from '../../axios';
-
 const AddPost = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const inputFileRef = useRef(null);
+
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [tags, setTags] = useState('');
   const [imageUrl, setImageUrl] = useState('');
-  const inputFileRef = useRef(null);
 
   const isEditing = Boolean(id);
 
@@ -77,7 +78,7 @@ const AddPost = () => {
           });
       } catch (err) {
         console.warn(err);
-        alert('Error')
+        alert('Error');
       }
     }
   }, []);

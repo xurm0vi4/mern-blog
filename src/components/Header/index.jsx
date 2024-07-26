@@ -1,10 +1,10 @@
 import React from 'react';
-
-import styles from './Header.module.scss';
-import { Button, Container } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../redux/slices/auth';
+
+import { Button, Container } from '@mui/material';
+import styles from './Header.module.scss';
 
 const Header = () => {
   const dispatch = useDispatch();
