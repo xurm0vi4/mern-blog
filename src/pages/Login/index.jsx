@@ -3,17 +3,16 @@ import styles from './Login.module.scss';
 import { Button, Paper, TextField, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { fetchLogin } from '../../redux/slices/auth';
+import { fetchLogin, fetchRegister } from '../../redux/slices/auth';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector((state) => Boolean(state.auth.data));
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    setError,
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
@@ -24,24 +23,25 @@ const Login = () => {
   });
 
   const onSubmit = async (values) => {
-    const data = await dispatch(fetchLogin(values));
+    try {
+      const data = await dispatch(fetchLogin(values));
 
-    if (!data.payload) {
-      alert('Failed sign in');
-    }
+      if (!data.payload) {
+        alert('Failed sign in');
+      }
 
-    if ('token' in data.payload) {
-      window.localStorage.setItem('token', data.payload.token);
+      if ('token' in data.payload) {
+        window.localStorage.setItem('token', data.payload.token);
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 
-  
-
-  if(isAuth){
-    navigate('/')
+  if (isAuth) {
+    navigate('/');
   }
 
-  console.log(isAuth);
   return (
     <Paper classes={{ root: styles.root }}>
       <Typography variant="h4" textAlign="center" mb={3}>
@@ -61,13 +61,13 @@ const Login = () => {
           className={styles.field}
           label="Password"
           type="password"
-          error={Boolean(errors.email?.message)}
-          helperText={errors.email?.message}
+          error={Boolean(errors.password?.message)}
+          helperText={errors.password?.message}
           {...register('password', { required: 'Enter your password' })}
           fullWidth
         />
         <Button disabled={!isValid} size="large" variant="contained" type="submit" fullWidth>
-          Enter
+          Sign in
         </Button>
       </form>
     </Paper>

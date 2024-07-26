@@ -4,29 +4,37 @@ import CommentsBlock from '../components/CommentsBlock';
 import AddComment from '../components/AddComment';
 import { useParams } from 'react-router-dom';
 import axios from '../axios';
+import PostSkeleton from '../components/Post/PostSkeleton';
 
 const FullPost = () => {
-  const [data, setData] = useState([]);
+  const [post, setPost] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [render, setRender] = useState(0);
   const { id } = useParams();
-  useEffect(() => {
-    axios
+
+  const getPost = async () => {
+    await axios
       .get(`/posts/${id}`)
       .then((res) => {
-        setData(res.data);
+        setPost(res.data);
         setIsLoading(false);
       })
       .catch((err) => {
         console.warn(err);
         alert('error');
       });
-  }, []);
-  console.log(data);
+  };
+
+  useEffect(() => {
+    getPost();
+  }, [render]);
+
+
   return (
     <div style={{ marginTop: 30 }}>
-      {isLoading ? <h1>Loading</h1> : <Post {...data} isFullPost/>}
-      <CommentsBlock>
-        <AddComment />
+      {isLoading ? <PostSkeleton /> : <Post {...post} isFullPost />}
+      <CommentsBlock comments={post?.comments} isLoading={isLoading}>
+        <AddComment id={id} render={render} setRender={setRender} />
       </CommentsBlock>
     </div>
   );

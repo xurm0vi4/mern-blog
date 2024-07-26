@@ -2,11 +2,22 @@ import React from 'react';
 
 import styles from './Header.module.scss';
 import { Button, Container } from '@mui/material';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../redux/slices/auth';
 
 const Header = () => {
+  const dispatch = useDispatch();
   const isAuth = useSelector((state) => Boolean(state.auth.data));
+  const navigate = useNavigate();
+
+  const onClickLogout = () => {
+    if (window.confirm('Are you sure you want to log out?')) {
+      dispatch(logout());
+      window.localStorage.removeItem('token');
+      navigate('/');
+    }
+  };
 
   return (
     <header className={styles.root}>
@@ -19,16 +30,14 @@ const Header = () => {
           </Link>
           {isAuth ? (
             <div className={styles.buttons}>
-              <Link to="/login">
+              <Link to="/add-post">
                 <Button color="primary" variant="contained">
                   Make a post
                 </Button>
               </Link>
-              <Link to="/register">
-                <Button color="error" variant="contained">
-                  Log out
-                </Button>
-              </Link>
+              <Button onClick={onClickLogout} color="error" variant="contained">
+                Log out
+              </Button>
             </div>
           ) : (
             <div className={styles.buttons}>
