@@ -50,7 +50,7 @@ const Post = ({
       )}
       {imageUrl && (
         <img
-          src={`${process.env.REACT_APP_API_URL$}${imageUrl}`}
+          src={`${process.env.REACT_APP_API_URL}${imageUrl}`}
           style={isFullPost && { minHeight: '300px', height: '100%' }}
           alt="post image"
           className={styles.img}
