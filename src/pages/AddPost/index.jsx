@@ -121,7 +121,7 @@ const AddPost = () => {
               onClick={removeImage}>
               Delete
             </Button>
-            <img className={styles.img} src={`http://localhost:4444${imageUrl}`} alt="Uploaded" />
+            <img className={styles.img} src={`${process.env.REACT_APP_API_URL}${imageUrl}`} alt="Uploaded" />
           </>
         )}
       </div>
