@@ -20,7 +20,7 @@ const Home = () => {
 
   const isPostsLoading = posts.status === 'loading';
   const isTagsLoading = tags.status === 'loading';
-  const isCommentsLoading = comments.status === 'loading';s
+  const isCommentsLoading = comments.status === 'loading';
 
   useEffect(() => {
     dispatch(fetchPosts());
