@@ -1,5 +1,7 @@
 # mern blog frontend
+
 Frontend for mern-blog project. [Backend part here.](https://github.com/xurm0vi4/mern-blog-back.git)
+### Attention! The backend server may take up to a minute to start.
 
 ## Run guide
 
